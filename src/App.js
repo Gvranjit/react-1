@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+
 import "./App.css";
 
 import Person from "./Person/Person";
@@ -11,6 +11,7 @@ class App extends Component {
                { name: "Subu", age: "18" },
                { name: "Cnobi", age: "29" },
           ],
+          showPersons: false,
      };
 
      switchNameHandler = (newName) => {
@@ -35,24 +36,40 @@ class App extends Component {
                ],
           });
      };
+
+     togglePersonsHandler = () => {
+          const doesShow = this.state.showPersons;
+          this.setState({
+               showPersons: !doesShow,
+          });
+     };
      render() {
           return (
                <div className="App">
                     <h1> Hi, I'm an APP</h1>
-                    <button onClick={this.switchNameHandler.bind(this, "AALU VYANTA GOBI")}>
-                         Switch Name
-                    </button>
-                    <Person
-                         name={this.state.persons[0].name}
-                         age={this.state.persons[0].age}
-                         click={this.switchNameHandler.bind(this, "AALU VYANTA")}
-                         change={this.nameChangedHandeler}
-                    />
-                    <Person name={this.state.persons[1].name} age={this.state.persons[1].age} />
-                    <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+                    <button onClick={this.togglePersonsHandler}>Switch Name</button>
 
-                    <Person />
-                    <Person />
+                    {this.state.showPersons ? (
+                         <div>
+                              <Person
+                                   name={this.state.persons[0].name}
+                                   age={this.state.persons[0].age}
+                                   click={this.switchNameHandler.bind(this, "AALU VYANTA")}
+                                   change={this.nameChangedHandeler}
+                              />
+                              <Person
+                                   name={this.state.persons[1].name}
+                                   age={this.state.persons[1].age}
+                              />
+                              <Person
+                                   name={this.state.persons[2].name}
+                                   age={this.state.persons[2].age}
+                              />
+
+                              <Person />
+                              <Person />
+                         </div>
+                    ) : null}
                </div>
           );
           // return React.createElement(
