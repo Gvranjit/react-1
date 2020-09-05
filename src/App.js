@@ -42,6 +42,11 @@ class App extends Component {
      };
      render() {
           let persons = null;
+          const style = {
+               background: "green",
+               color: "white",
+               padding: "0.5rem 5rem",
+          };
 
           if (this.state.showPersons) {
                persons = (
@@ -60,12 +65,24 @@ class App extends Component {
                          })}
                     </div>
                );
+               style.background = "maroon";
+          }
+
+          const classes = [];
+          if (this.state.persons.length <= 2) {
+               classes.push("red");
+          }
+          if (this.state.persons.length <= 1) {
+               classes.push("bold");
           }
 
           return (
                <div className="App">
                     <h1> Hi, I'm an APP</h1>
-                    <button onClick={this.togglePersonsHandler}>Switch Name</button>
+                    <p className={classes.join(" ")}>Test Paragraph</p>
+                    <button style={style} onClick={this.togglePersonsHandler}>
+                         Switch Name
+                    </button>
 
                     <div>{persons}</div>
                </div>
