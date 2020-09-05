@@ -4,6 +4,8 @@ import "./App.css";
 
 import Person from "./Person/Person";
 
+import Radium from "radium";
+
 class App extends Component {
      state = {
           persons: [
@@ -46,6 +48,9 @@ class App extends Component {
                background: "green",
                color: "white",
                padding: "0.5rem 5rem",
+               ":hover": {
+                    background: "",
+               },
           };
 
           if (this.state.showPersons) {
@@ -95,4 +100,4 @@ class App extends Component {
      }
 }
 
-export default App;
+export default Radium(App);
