@@ -4,7 +4,7 @@ import "./App.css";
 
 import Person from "./Person/Person";
 
-import Radium from "radium";
+import Radium, { StyleRoot } from "radium";
 
 class App extends Component {
      state = {
@@ -49,7 +49,9 @@ class App extends Component {
                color: "white",
                padding: "0.5rem 5rem",
                ":hover": {
-                    background: "",
+                    background: "#ffffaa",
+                    color: "green",
+                    cursor: "pointer",
                },
           };
 
@@ -71,6 +73,11 @@ class App extends Component {
                     </div>
                );
                style.background = "maroon";
+               style[":hover"] = {
+                    background: "#ffffaa",
+                    color: "red",
+                    cursor: "pointer",
+               };
           }
 
           const classes = [];
@@ -80,17 +87,18 @@ class App extends Component {
           if (this.state.persons.length <= 1) {
                classes.push("bold");
           }
-
           return (
-               <div className="App">
-                    <h1> Hi, I'm an APP</h1>
-                    <p className={classes.join(" ")}>Test Paragraph</p>
-                    <button style={style} onClick={this.togglePersonsHandler}>
-                         Switch Name
-                    </button>
+               <StyleRoot>
+                    <div className="App">
+                         <h1> Hi, I'm an APP</h1>
+                         <p className={classes.join(" ")}>Test Paragraph</p>
+                         <button style={style} onClick={this.togglePersonsHandler}>
+                              Switch Name
+                         </button>
 
-                    <div>{persons}</div>
-               </div>
+                         <div>{persons}</div>
+                    </div>
+               </StyleRoot>
           );
           // return React.createElement(
           //      "App",
