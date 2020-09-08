@@ -4,7 +4,20 @@ import "./App.css";
 
 import Person from "./Person/Person";
 
-import Radium, { StyleRoot } from "radium";
+import styled from "styled-components";
+// import Radium, { StyleRoot } from "radium";
+
+const StyledButton = styled.button`
+     background: ${(props) => (props.alt ? "maroon" : "green")};
+     color: white;
+     padding: 0.5rem 5rem;
+
+     :hover {
+          background: #ffffaa;
+          color: ${(props) => (props.alt ? "maroon" : "green")};
+          cursor: pointer;
+     }
+`;
 
 class App extends Component {
      state = {
@@ -88,17 +101,15 @@ class App extends Component {
                classes.push("bold");
           }
           return (
-               <StyleRoot>
-                    <div className="App">
-                         <h1> Hi, I'm an APP</h1>
-                         <p className={classes.join(" ")}>Test Paragraph</p>
-                         <button style={style} onClick={this.togglePersonsHandler}>
-                              Switch Name
-                         </button>
+               <div className="App">
+                    <h1> Hi, I'm an APP</h1>
+                    <p className={classes.join(" ")}>Test Paragraph</p>
+                    <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}>
+                         Switch Name
+                    </StyledButton>
 
-                         <div>{persons}</div>
-                    </div>
-               </StyleRoot>
+                    <div>{persons}</div>
+               </div>
           );
           // return React.createElement(
           //      "App",
@@ -108,4 +119,4 @@ class App extends Component {
      }
 }
 
-export default Radium(App);
+export default App;
