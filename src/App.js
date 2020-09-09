@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "./App.css";
+import classes from "./App.css";
 
 import Person from "./Person/Person";
 
@@ -57,16 +57,7 @@ class App extends Component {
      };
      render() {
           let persons = null;
-          const style = {
-               background: "green",
-               color: "white",
-               padding: "0.5rem 5rem",
-               ":hover": {
-                    background: "#ffffaa",
-                    color: "green",
-                    cursor: "pointer",
-               },
-          };
+          let btnClass = [classes.button];
 
           if (this.state.showPersons) {
                persons = (
@@ -85,28 +76,28 @@ class App extends Component {
                          })}
                     </div>
                );
-               style.background = "maroon";
-               style[":hover"] = {
-                    background: "#ffffaa",
-                    color: "red",
-                    cursor: "pointer",
-               };
+
+               btnClass.push(classes.Red);
           }
 
-          const classes = [];
+          const assignedClasses = [];
           if (this.state.persons.length <= 2) {
-               classes.push("red");
+               assignedClasses.push(classes.red);
           }
           if (this.state.persons.length <= 1) {
-               classes.push("bold");
+               assignedClasses.push(classes.bold);
           }
           return (
-               <div className="App">
+               <div className={classes.App}>
                     <h1> Hi, I'm an APP</h1>
-                    <p className={classes.join(" ")}>Test Paragraph</p>
-                    <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}>
+                    <p className={assignedClasses.join(" ")}>Test Paragraph</p>
+                    <button
+                         className={btnClass.join(" ")}
+                         alt={this.state.showPersons}
+                         onClick={this.togglePersonsHandler}
+                    >
                          Switch Name
-                    </StyledButton>
+                    </button>
 
                     <div>{persons}</div>
                </div>

@@ -7,3 +7,23 @@
 .bold {
      font-weight: bold;
 }
+.button {
+     background: green;
+     color: white;
+     padding: 0.5rem 5rem;
+}
+.button:hover {
+     background: #ffffaa;
+     color: green;
+     cursor: pointer;
+}
+.button.Red {
+     background: rgb(128, 0, 0);
+     color: white;
+     padding: 0.5rem 5rem;
+}
+.button.Red:hover {
+     background: #ffffaa;
+     color: maroon;
+     cursor: pointer;
+}
